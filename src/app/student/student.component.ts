@@ -11,7 +11,7 @@ export class StudentComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    let response = this.http.get('http://localhost:9191/students');
+    let response = this.http.get('http://localhost:9191/student');
     response.subscribe((data) => (this.students = data));
   }
 }

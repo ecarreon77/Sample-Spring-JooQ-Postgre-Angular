@@ -28,6 +28,18 @@ public class RevalidaApplication {
 		service.insertStudent(student);
 		return "student added...";
 	}
+
+	@DeleteMapping
+	public String deleteStudents(@RequestBody Student student) {
+		service.deleteStudents(student);
+		return "student deleted...";
+	}
+	
+	@PutMapping
+	public String updateStudent(@RequestBody Student student) {
+		service.updateStudent(student);
+		return "student updated...";
+	}
 	
 	@CrossOrigin("http://localhost:4200/")
 	@GetMapping
