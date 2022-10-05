@@ -17,32 +17,34 @@ import com.jooq.revalida.service.StudentService;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("/students")
 public class RevalidaApplication {
 
 	@Autowired
 	private StudentService service;
 	
-	@PostMapping
+	@CrossOrigin("http://localhost:4200/")
+	@PostMapping("/students")
 	public String AddStudent(@RequestBody Student student) {
 		service.insertStudent(student);
 		return "student added...";
 	}
 
-	@DeleteMapping
+	@CrossOrigin("http://localhost:4200/")
+	@DeleteMapping("/students")
 	public String deleteStudents(@RequestBody Student student) {
 		service.deleteStudents(student);
 		return "student deleted...";
 	}
 	
-	@PutMapping
+	@CrossOrigin("http://localhost:4200/")
+	@PutMapping("/students")
 	public String updateStudent(@RequestBody Student student) {
 		service.updateStudent(student);
 		return "student updated...";
 	}
 	
 	@CrossOrigin("http://localhost:4200/")
-	@GetMapping
+	@GetMapping("/student")
 	public List<Student> getStudents() {
 		return service.getStudents();
 	}
