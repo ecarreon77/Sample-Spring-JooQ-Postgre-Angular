@@ -43,7 +43,10 @@
               <button class="btn btn-sm btn-warning">
                 <i class="fa fa-edit"></i>Edit
               </button>
-              <button class="btn btn-sm btn-danger">
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="openDelete(contentDelete, student)"
+              >
                 <i class="fa fa-remove"></i>Delete
               </button>
             </td>
@@ -69,21 +72,39 @@
   <div class="modal-body">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group">
-        <label for="first_name">Firstname</label>
+        <label for="firstName">Firstname</label>
         <div class="input-group">
-          <input id="first_name" class="form-control" />
+          <input
+            id="firstName"
+            class="form-control"
+            name="firstName"
+            #firstname="ngModel"
+            ngModel
+          />
         </div>
       </div>
       <div class="form-group">
-        <label for="f.last_name">Lastname</label>
+        <label for="lastName">Lastname</label>
         <div class="input-group">
-          <input id="last_name" class="form-control" />
+          <input
+            id="lastName"
+            class="form-control"
+            name="lastName"
+            #lastname="ngModel"
+            ngModel
+          />
         </div>
       </div>
       <div class="form-group">
         <label for="age">Age</label>
         <div class="input-group">
-          <input id="age" class="form-control" />
+          <input
+            id="age"
+            class="form-control"
+            name="age"
+            #age="ngModel"
+            ngModel
+          />
         </div>
       </div>
       <br />
@@ -91,6 +112,37 @@
         <button data-dismiss="modal" class="btn btn-info">Submit</button>
       </div>
     </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Cancel
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #contentDelete let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Delete</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2>Are you sure you want to delete this record.</h2>
+    <div class="border text-center">
+      <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()">
+        Yes, Delete!
+      </button>
+    </div>
   </div>
   <div class="modal-footer">
     <button
