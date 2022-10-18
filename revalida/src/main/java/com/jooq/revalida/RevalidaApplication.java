@@ -41,7 +41,6 @@ public class RevalidaApplication {
 	@PatchMapping("student/{Id}")
 	public String updateStudent(@RequestBody Student student, @PathVariable int Id) {
 		service.updateStudent(student, Id);
-		
 		return null;
 	}
 	 	
