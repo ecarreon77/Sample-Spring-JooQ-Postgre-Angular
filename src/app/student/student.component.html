@@ -40,12 +40,15 @@
               <span>{{ student.age }}</span>
             </td>
             <td>
-              <button class="btn btn-sm btn-warning">
+              <button
+                class="btn btn-sm btn-warning"
+                (click)="openUpdate(contentupdate, student)"
+              >
                 <i class="fa fa-edit"></i>Edit
               </button>
               <button
                 class="btn btn-sm btn-danger"
-                (click)="openDelete(contentDelete, student)"
+                (click)="openDelete(targetModal, student)"
               >
                 <i class="fa fa-remove"></i>Delete
               </button>
@@ -124,7 +127,74 @@
   </div>
 </ng-template>
 
-<ng-template #contentDelete let-modal>
+<ng-template #contentupdate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Student</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="updateSubmit(f)">
+      <div class="form-group">
+        <label for="firstName">Firstname</label>
+        <div class="input-group">
+          <input
+            id="firstName"
+            class="form-control"
+            name="firstName"
+            #firstname="ngModel"
+            ngModel
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Lastname</label>
+        <div class="input-group">
+          <input
+            id="lastName"
+            class="form-control"
+            name="lastName"
+            #lastname="ngModel"
+            ngModel
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <div class="input-group">
+          <input
+            id="age"
+            class="form-control"
+            name="age"
+            #age="ngModel"
+            ngModel
+          />
+        </div>
+      </div>
+      <br />
+      <div class="text-center">
+        <button data-dismiss="modal" class="btn btn-info">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Cancel
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #targetModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Confirm Delete</h4>
     <button
