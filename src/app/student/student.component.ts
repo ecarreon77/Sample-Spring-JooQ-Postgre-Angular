@@ -66,10 +66,11 @@ export class StudentComponent implements OnInit {
 
   onDelete() {
     this.http
-      .delete('http://localhost:9191/student/' + this.deleteId + '/delete')
+      .delete('http://localhost:9191/student/' + this.deleteId)
       .subscribe((result) => {
         this.ngOnInit();
         this.modalService.dismissAll();
       });
+    console.log(this.deleteId);
   }
 }

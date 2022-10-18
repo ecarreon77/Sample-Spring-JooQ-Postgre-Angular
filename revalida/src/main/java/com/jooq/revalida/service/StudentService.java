@@ -26,18 +26,18 @@ public class StudentService {
 				.fetchInto(Student.class);
 	}
 
-	public void deleteStudents(Student student ) {
+	public void deleteStudents(int Id ) {
 		dslContext.delete(Tables.STUDENT)
-		.where(Tables.STUDENT.ID.eq(student.getId()))
+		.where(Tables.STUDENT.ID.eq(Id))
 		.execute();
 	}
 	
-	public void updateStudent(Student student) {
+	public void updateStudent(Student student, int Id) {
 		dslContext.update(Tables.STUDENT)
 		.set(Tables.STUDENT.FIRST_NAME, student.getFirstName())
 		.set(Tables.STUDENT.LAST_NAME, student.getLastName())
 		.set(Tables.STUDENT.AGE, student.getAge())
-		.where(Tables.STUDENT.ID.eq(student.getId()))
+		.where(Tables.STUDENT.ID.eq(Id))
 		.execute();
 	}
 }
