@@ -76,6 +76,7 @@ export class StudentComponent implements OnInit {
         this.ngOnInit();
         this.modalService.dismissAll();
       });
+    console.log(this.deleteId);
   }
 
   openUpdate(contentupdate: any, student: Student) {

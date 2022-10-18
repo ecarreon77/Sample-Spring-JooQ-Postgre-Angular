@@ -32,17 +32,10 @@ public class RevalidaApplication {
 		return student;
 	}
 	
-	
 	@DeleteMapping("student/{Id}")
 	public String deleteStudents(@PathVariable int Id) {
 		service.deleteStudents(Id);
 		return null;
-	}
-	
-	@PutMapping("student/{id}")
-	public String updateStudent(@RequestBody Student student) {
-		service.updateStudent(student);
-		return "student updated...";
 	}
 	
 	@PatchMapping("student/{Id}")
@@ -51,7 +44,7 @@ public class RevalidaApplication {
 		
 		return null;
 	}
-	 
+	 	
 	@GetMapping("/student")
 	public List<Student> getStudents() {
 		return service.getStudents();

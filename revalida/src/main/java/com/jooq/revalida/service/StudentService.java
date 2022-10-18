@@ -40,13 +40,4 @@ public class StudentService {
 		.where(Tables.STUDENT.ID.eq(Id))
 		.execute();
 	}
-	
-	public void updateStudent(Student student) {
-		dslContext.update(Tables.STUDENT)
-		.set(Tables.STUDENT.FIRST_NAME, student.getFirstName())
-		.set(Tables.STUDENT.LAST_NAME, student.getLastName())
-		.set(Tables.STUDENT.AGE, student.getAge())
-		.where(Tables.STUDENT.ID.eq(student.getId()))
-		.execute();
-	}
 }
